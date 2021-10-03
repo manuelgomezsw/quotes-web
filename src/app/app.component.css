@@ -3,9 +3,21 @@
 }
 
 .example-card {
-  width: 400px;
+  margin: 10px;
 }
 
 .example-card-footer {
   padding: 12px !important;
+}
+
+.button-create-quote {
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+  display: flex;
+}
+
+.button-create-quote .button-holder {
+  justify-content: flex-end;
+  display: flex;
 }
