@@ -6,9 +6,9 @@
     </button>
 </mat-form-field>
 
-<mat-card class="example-card">
+<mat-card class="example-card" *ngFor="let quote of quotes">
     <mat-card-title>
-        Farid Dieck
+        {{quote.author}}
         <button mat-icon-button [matMenuTriggerFor]="menu" style="float: right;">
             <mat-icon>more_vert</mat-icon>
         </button>
@@ -23,46 +23,14 @@
             </button>
         </mat-menu>
     </mat-card-title>
-    <mat-card-subtitle>Para ti</mat-card-subtitle>
+    <mat-card-subtitle>{{quote.work}}</mat-card-subtitle>
     <mat-card-content>
-        <p>No se puede modificar la conducta de quien no ve un problema en ella.</p>
+        <p>{{quote.message}}</p>
     </mat-card-content>
     <mat-divider inset></mat-divider>
     <mat-card-footer class="example-card-footer">
         <mat-chip-list aria-label="Fish selection">
-            <mat-chip color="primary" selected>Conducta Humana</mat-chip>
-            <mat-chip color="primary" selected>Amor propio</mat-chip>
-        </mat-chip-list>
-    </mat-card-footer>
-</mat-card>
-
-<mat-card class="example-card">
-    <mat-card-title>
-        Borja Vilaseca
-        <button mat-icon-button [matMenuTriggerFor]="menu" style="float: right;">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>edit</mat-icon>
-                <span>Edit</span>
-            </button>
-            <button mat-menu-item>
-                <mat-icon>remove_circle</mat-icon>
-                <span>Delete</span>
-            </button>
-        </mat-menu>
-    </mat-card-title>
-    <mat-card-subtitle>Para ti</mat-card-subtitle>
-    <mat-card-content>
-        <p>Sabemos que hemos encontrado nuestro lugar en el mundo porque agradecemos el aprendizaje derivado de todas las experiencias de nuestra vida, nos sentimos en paz y miramos hacia delante con confianza y optimismo.</p>
-    </mat-card-content>
-    <mat-divider inset></mat-divider>
-    <mat-card-footer class="example-card-footer">
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip color="primary" selected>Agradecimiento</mat-chip>
-            <mat-chip color="primary" selected>Aprendizaje</mat-chip>
-            <mat-chip color="primary" selected>Optimismo</mat-chip>
+            <mat-chip color="primary" selected *ngFor="let tag of quote.tags">{{tag}}</mat-chip>
         </mat-chip-list>
     </mat-card-footer>
 </mat-card>
