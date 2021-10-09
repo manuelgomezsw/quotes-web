@@ -13,6 +13,7 @@ import { Quote } from '../../interfaces/quote';
 export class QuoteFormComponent implements OnInit {
 
   @Output() saveQuoteEvent = new EventEmitter();
+  @Output() updateQuoteEvent = new EventEmitter();
 
   constructor(public appServices: AppService) { }
 
@@ -20,11 +21,12 @@ export class QuoteFormComponent implements OnInit {
 
   }
 
-  quote = {} as Quote;
+  public quote = {} as Quote;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+
   selectable = true;
   removable = true;
   addOnBlur = true;
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
   keywords: string[] = [];
 
   addKeywordQuote(event: MatChipInputEvent): void {
@@ -45,12 +47,13 @@ export class QuoteFormComponent implements OnInit {
     }
   }
 
-  rememberQuote(author : string, work : string, message : string) {
-    this.quote.author = author;
-    this.quote.work = work;
+  rememberQuote() {
     this.quote.tags = this.keywords;
-    this.quote.message = message;
-
-    this.saveQuoteEvent.emit(this.quote);
+    
+    if (this.quote.id == undefined) {
+      this.saveQuoteEvent.emit(this.quote);
+    } else {
+      this.updateQuoteEvent.emit(this.quote);
+    }
   }
 }

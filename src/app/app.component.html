@@ -1,8 +1,8 @@
 <mat-form-field class="example-form-field" appearance="fill">
     <mat-label>Find a quote by author, work, tags or simply keyword...</mat-label>
     <input matInput type="text" [(ngModel)]="valueToFind">
-    <button *ngIf="valueToFind" matSuffix mat-icon-button aria-label="Clear" (click)="valueToFind=''">
-        <mat-icon>close</mat-icon>
+    <button *ngIf="valueToFind" matSuffix mat-icon-button aria-label="Search" (keydown.enter)="searchQuotes()" (click)="searchQuotes()">
+        <mat-icon>search</mat-icon>
     </button>
 </mat-form-field>
 
@@ -13,7 +13,7 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="editQuote(quote.id)">
                 <mat-icon>edit</mat-icon>
                 <span>Edit</span>
             </button>
@@ -37,7 +37,7 @@
 
 <div class="button-create-quote">
     <div class="button-holder">
-        <button mat-fab color="primary" (click)="openQuoteFormDialog()">
+        <button mat-fab color="primary" (click)="createQuote()">
             <mat-icon>add</mat-icon>
         </button>
     </div>

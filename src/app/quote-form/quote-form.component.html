@@ -4,13 +4,13 @@
     <p>
         <mat-form-field appearance="standard">
             <mat-label>Author</mat-label>
-            <input matInput autocomplete="off" #author>
+            <input matInput autocomplete="off" [(ngModel)]="quote.author">
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="standard">
             <mat-label>Work</mat-label>
-            <input matInput autocomplete="off" #work>
+            <input matInput autocomplete="off" [(ngModel)]="quote.work">
         </mat-form-field>
     </p>
     <p>
@@ -32,11 +32,11 @@
     <p>
         <mat-form-field appearance="standard">
             <mat-label>Quote</mat-label>
-            <textarea matInput cols="10" rows="5" required #quote></textarea>
+            <textarea matInput cols="10" rows="5" required [(ngModel)]="quote.message"></textarea>
         </mat-form-field>
     </p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button color="primary" cdkFocusInitial (click)="rememberQuote(author.value, work.value, quote.value)">Remember</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="rememberQuote()">Remember</button>
 </mat-dialog-actions>

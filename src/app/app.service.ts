@@ -27,8 +27,24 @@ export class AppService {
       );
   }
 
+  getQuoteById(idQuote : string): Observable<Quote> {
+    const url = `${this.quotesUrl}/${idQuote}`;
+    return this.http.get<Quote>(url)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
+
   saveQuote(quote: Quote): Observable<Quote> {
     return this.http.post<Quote>(this.quotesUrl, quote, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateQuote(quote: Quote): Observable<Quote> {
+    return this.http.put<Quote>(this.quotesUrl, quote, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
