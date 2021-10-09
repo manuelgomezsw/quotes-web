@@ -1,1 +1,42 @@
-<p>quote-form works!</p>
+<h2 mat-dialog-title>Remember your quote</h2>
+
+<mat-dialog-content class="mat-typography">
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Author</mat-label>
+            <input matInput autocomplete="off" #author>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Work</mat-label>
+            <input matInput autocomplete="off" #work>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Quote keywords</mat-label>
+            <mat-chip-list #chipList aria-label="Quote keywords">
+                <mat-chip *ngFor="let keyword of keywords" [selectable]="selectable" [removable]="removable"
+                    (removed)="removeKeywordQuote(keyword)">
+                    {{keyword}}
+                    <button matChipRemove *ngIf="removable">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+                <input [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addKeywordQuote($event)">
+            </mat-chip-list>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Quote</mat-label>
+            <textarea matInput cols="10" rows="5" required #quote></textarea>
+        </mat-form-field>
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="rememberQuote(author.value, work.value, quote.value)">Remember</button>
+</mat-dialog-actions>

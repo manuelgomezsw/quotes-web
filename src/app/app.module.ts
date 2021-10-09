@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-import { FormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon'
@@ -9,6 +9,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatChipsModule,
     MatMenuModule,
     MatButtonModule,
-    HttpClientModule
+    MatDialogModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

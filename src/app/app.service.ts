@@ -4,18 +4,40 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { Quote } from '../interfaces/quote';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   constructor(private http: HttpClient) { }
-  quotesUrl = 'http://localhost:8080/api/quotes';
 
-  getQuotes() : Observable<Quote[]> {
+  quotesUrl = 'http://localhost:8080/api/quotes';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
+  getQuotes(): Observable<Quote[]> {
     return this.http.get<Quote[]>(this.quotesUrl)
       .pipe(
         retry(3),
+        catchError(this.handleError)
+      );
+  }
+
+  saveQuote(quote: Quote): Observable<Quote> {
+    return this.http.post<Quote>(this.quotesUrl, quote, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  deleteQuote(idQuote: string): Observable<string> {
+    const url = `${this.quotesUrl}/${idQuote}`;
+    return this.http.delete<string>(url, this.httpOptions)
+      .pipe(
         catchError(this.handleError)
       );
   }

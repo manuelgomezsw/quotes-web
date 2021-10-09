@@ -17,7 +17,7 @@
                 <mat-icon>edit</mat-icon>
                 <span>Edit</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="deleteQuote(quote.id)">
                 <mat-icon>remove_circle</mat-icon>
                 <span>Delete</span>
             </button>
@@ -37,7 +37,7 @@
 
 <div class="button-create-quote">
     <div class="button-holder">
-        <button mat-fab color="primary">
+        <button mat-fab color="primary" (click)="openQuoteFormDialog()">
             <mat-icon>add</mat-icon>
         </button>
     </div>
