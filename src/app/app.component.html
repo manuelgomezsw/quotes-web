@@ -1,6 +1,9 @@
 <mat-form-field class="example-form-field" appearance="fill">
     <mat-label>Find a quote by author, work, tags or simply keyword...</mat-label>
     <input matInput type="text" [(ngModel)]="valueToFind">
+    <button matSuffix mat-icon-button aria-label="Search" (click)="createQuote()">
+        <mat-icon>add</mat-icon>
+    </button>
     <button *ngIf="valueToFind" matSuffix mat-icon-button aria-label="Search" (keydown.enter)="searchQuotes()" (click)="searchQuotes()">
         <mat-icon>search</mat-icon>
     </button>
@@ -34,11 +37,3 @@
         </mat-chip-list>
     </mat-card-footer>
 </mat-card>
-
-<div class="button-create-quote">
-    <div class="button-holder">
-        <button mat-fab color="primary" (click)="createQuote()">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-</div>

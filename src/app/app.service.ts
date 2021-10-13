@@ -12,7 +12,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class AppService {
   constructor(private http: HttpClient) { }
 
-  quotesUrl = 'http://localhost:8080/api/quotes';
+  quotesUrl = 'http://quotesapi-env.eba-xa5xjydg.us-east-1.elasticbeanstalk.com/api/quotes';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

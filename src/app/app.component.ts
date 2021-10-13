@@ -78,13 +78,14 @@ export class AppComponent {
   }
 
   updateQuote(quote: Quote) {
-    this.appServices.updateQuote(quote).subscribe(resultQuoteCreated => {
-      this.getAllQuotes();
-      this.formQuoteDialog.closeAll();
-      this.snackBar.open("Quote updated", '', {
-        duration: 3000
+    this.appServices.updateQuote(quote)
+      .subscribe(resultQuoteCreated => {
+        this.getAllQuotes();
+        this.formQuoteDialog.closeAll();
+        this.snackBar.open("Quote updated", '', {
+          duration: 3000
+        });
       });
-    });
   }
 
   deleteQuote(idQuote: string) {
