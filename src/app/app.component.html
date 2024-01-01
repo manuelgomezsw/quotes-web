@@ -16,10 +16,9 @@
     style="width: 180px"
   >
     <mat-nav-list style="margin: 0px; border-radius: 0px; box-shadow: none">
-      <a mat-list-item href="/">Home</a>
-      <a mat-list-item href="/search">Search</a>
-      <a mat-list-item href="/new">New</a>
-      <a mat-list-item href="/edit">Edit</a>
+      <a mat-list-item [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a mat-list-item [routerLink]="['/search']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">Search</a>
+      <a mat-list-item [routerLink]="['/new']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">New</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content style="height: 90vh; padding: 10px;">

@@ -1,1 +1,41 @@
-<p>new works!</p>
+<mat-form-field class="full-width">
+  <mat-label>Leave a phrase</mat-label>
+  <input
+    id="phraseInput"
+    matInput
+    type="text"
+    [(ngModel)]="quote.phrase"
+    name="phrase"
+  />
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <mat-label>Who is the author?</mat-label>
+  <input
+    id="authorInput"
+    matInput
+    type="text"
+    [(ngModel)]="quote.author"
+    name="author"
+  />
+</mat-form-field>
+
+<mat-form-field class="full-width">
+  <mat-label>Which work is it?</mat-label>
+  <input
+    id="workInput"
+    matInput
+    type="text"
+    [(ngModel)]="quote.work"
+    name="work"
+  />
+</mat-form-field>
+
+<button
+  mat-flat-button
+  type="button"
+  color="primary"
+  (click)="onMemorizeQuote()"
+>
+  MEMORIZE
+</button>
