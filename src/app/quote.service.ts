@@ -23,7 +23,7 @@ export class QuoteService {
   }
 
   addQuote(quote: Quote): Observable<any> {
-    return this.http.post("http://localhost:8080/quote", quote);
+    return this.http.post(environment.quotesUrl, quote);
   }
 
   editQuote(quote: Quote): Observable<any> {

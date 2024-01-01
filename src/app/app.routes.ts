@@ -16,7 +16,7 @@ export const routes: Routes = [
     component: NewComponent
   },
   {
-    path: 'edit',
+    path: 'edit/:quote_id',
     title: 'Edit Quote',
     component: EditComponent
   },

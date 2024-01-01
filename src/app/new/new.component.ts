@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+
 import { QuoteService } from '../quote.service';
 import { Quote } from '../quote';
 
@@ -32,7 +33,7 @@ export class NewComponent {
   onMemorizeQuote() {
     this.quoteService.addQuote(this.quote).subscribe({
       next: (response) => {
-        this.router.navigate(['/quotes']);
+        this.router.navigate(['/']);
         //this.notificationService.openSnackBar('Quote added!');
       },
       error: (error) => {
