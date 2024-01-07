@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Quote } from '../quote';
 import { QuoteService } from '../quote.service';
 import { environment } from '../../environments/environment';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-search',
@@ -36,7 +37,8 @@ export class SearchComponent {
 
   constructor(
     private quoteService: QuoteService,
-    private titleService: Title
+    private titleService: Title,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -52,8 +54,7 @@ export class SearchComponent {
       error: (error) => {
         if (error.status != 404) {
           console.log('Error searching by keyword: ' + JSON.stringify(error));
-          //this.logger.error("Error searching by keyword: " + JSON.stringify(error));
-          //this.notificationService.openSnackBar('Something went wrong... Try search again.');
+          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
         }
       },
     });

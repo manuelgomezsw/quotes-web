@@ -50,10 +50,7 @@ export class NewComponent {
       },
       error: (error) => {
         console.log('Error adding new quote: ' + JSON.stringify(error));
-        //this.logger.error('Error adding new quote: ' + JSON.stringify(error));
-        // this.notificationService.openSnackBar(
-        //   'Something went wrong... Try again.'
-        // );
+        this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
       },
     });
   }

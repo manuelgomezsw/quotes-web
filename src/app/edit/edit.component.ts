@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Quote } from '../quote';
 import { QuoteService } from '../quote.service';
 import { environment } from '../../environments/environment';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-edit',
@@ -28,7 +29,8 @@ export class EditComponent implements OnInit {
     private quoteService: QuoteService,
     private route: ActivatedRoute,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -49,9 +51,7 @@ export class EditComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error searching by keyword: ' + JSON.stringify(error));
-          // this.notificationService.openSnackBar(
-          //   'Something went wrong... Search again.'
-          // );
+          this.notificationService.openSnackBar('Algo malo ocurrió consultando la frase. Intenta de nuevo.');
         },
       });
     }
@@ -61,31 +61,27 @@ export class EditComponent implements OnInit {
     this.quoteService.editQuote(this.quote).subscribe({
       next: (response) => {
         this.router.navigate(['/']);
-        // this.notificationService.openSnackBar('Quote edited!');
+        this.notificationService.openSnackBar('Frase editada');
       },
       error: (error) => {
         console.error('Error editing quote: ' + JSON.stringify(error));
-        // this.notificationService.openSnackBar(
-        //   'Something went wrong... Try again.'
-        // );
+        this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
       },
     });
   }
 
   onDeleteQuote() {
     if (this.quote.quote_id === undefined) {
-      // this.notificationService.openSnackBar('QuoteID must be required...');
+      this.notificationService.openSnackBar('Se requiere una frase para editar');
     } else {
       this.quoteService.deleteQuote(this.quote.quote_id).subscribe({
         next: (response) => {
           this.router.navigate(['/']);
-          // this.notificationService.openSnackBar('Quote deleted!');
+          this.notificationService.openSnackBar('Frase eliminada');
         },
         error: (error) => {
           console.error('Error deleting quote: ' + JSON.stringify(error));
-          // this.notificationService.openSnackBar(
-          //   'Something went wrong... Try again.'
-          // );
+          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
         },
       });
     }
