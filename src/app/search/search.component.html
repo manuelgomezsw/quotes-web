@@ -1,18 +1,18 @@
 <mat-form-field style="width: 100%">
-  <mat-label>What do you want to remember?</mat-label>
+  <mat-label>¿Qué quieres descubrir?</mat-label>
   <input
     matInput
     type="text"
     [(ngModel)]="keyword"
     (keyup.enter)="onSearchByKeyword()"
   />
-  <button mat-icon-button *ngIf="keyword" matSuffix aria-label="Clear" (click)="onClearKeyword()">
-    <mat-icon>close</mat-icon>
+  <button mat-icon-button matSuffix (click)="onSearchByKeyword()">
+    <mat-icon>search</mat-icon>
   </button>
 </mat-form-field>
 
 <div *ngIf="quotes.length > 0">
-  <h2>Memorized quotes!</h2>
+  <h2>Frases a recordar</h2>
   <mat-card class="quote-card" *ngFor="let quote of quotes">
     <mat-card-header>
       <mat-card-title>
@@ -32,7 +32,7 @@
         mat-button
         color="primary"
         [routerLink]="['/edit/' + quote.quote_id]">
-        EDIT
+        EDITAR
       </button>
     </mat-card-actions>
   </mat-card>

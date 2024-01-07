@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { Quote } from '../quote';
 import { QuoteService } from '../quote.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-search',
@@ -23,7 +25,7 @@ import { QuoteService } from '../quote.service';
     MatFormFieldModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
@@ -32,7 +34,14 @@ export class SearchComponent {
   quotes: Quote[] = new Array();
   keyword: string = '';
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(
+    private quoteService: QuoteService,
+    private titleService: Title
+  ) {}
+
+  ngOnInit() {
+    this.titleService.setTitle(environment.titleWebSite + ' - Descubrir');
+  }
 
   onSearchByKeyword() {
     console.log(this.keyword);
@@ -51,7 +60,7 @@ export class SearchComponent {
   }
 
   onClearKeyword() {
-    this.keyword = "";
+    this.keyword = '';
     this.quotes = new Array();
   }
 }

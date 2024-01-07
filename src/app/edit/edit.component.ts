@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { Quote } from '../quote';
 import { QuoteService } from '../quote.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-edit',
@@ -25,10 +27,13 @@ export class EditComponent implements OnInit {
   constructor(
     private quoteService: QuoteService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {}
 
   ngOnInit() {
+    this.titleService.setTitle(environment.titleWebSite + ' - Editar');
+    
     const routeParams = this.route.snapshot.paramMap;
     this.quote.quote_id = Number(routeParams.get('quote_id'));
     this.getQuote();
