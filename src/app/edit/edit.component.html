@@ -1,12 +1,14 @@
 <mat-form-field class="full-width">
   <mat-label>Frase a recordar</mat-label>
-  <input
+  <textarea
     id="phraseInput"
+    cols="30"
+    rows="7"
     matInput
     type="text"
     [(ngModel)]="quote.phrase"
     name="phrase"
-  />
+  ></textarea>
 </mat-form-field>
 
 <mat-form-field class="full-width">
