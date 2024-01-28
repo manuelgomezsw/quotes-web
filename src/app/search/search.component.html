@@ -19,7 +19,7 @@
     [(ngModel)]="author"
     (keyup.enter)="onSearchByAuthor()"
   />
-  <button mat-icon-button matSuffix (click)="onSearchByKeyword()">
+  <button mat-icon-button matSuffix (click)="onSearchByAuthor()">
     <mat-icon>search</mat-icon>
   </button>
 </mat-form-field>
@@ -32,7 +32,7 @@
     [(ngModel)]="work"
     (keyup.enter)="onSearchByWork()"
   />
-  <button mat-icon-button matSuffix (click)="onSearchByKeyword()">
+  <button mat-icon-button matSuffix (click)="onSearchByWork()">
     <mat-icon>search</mat-icon>
   </button>
 </mat-form-field>
