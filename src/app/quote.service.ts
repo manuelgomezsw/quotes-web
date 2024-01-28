@@ -22,6 +22,14 @@ export class QuoteService {
     return this.http.get(environment.quotesUrl + "/keyword/" + keyword);
   }
 
+  getQuotesByAuthor(author: string): Observable<any> {
+    return this.http.get(environment.quotesUrl + "/author/" + author);
+  }
+
+  getQuotesByWork(work: string): Observable<any> {
+    return this.http.get(environment.quotesUrl + "/work/" + work);
+  }
+
   addQuote(quote: Quote): Observable<any> {
     return this.http.post(environment.quotesUrl, quote);
   }

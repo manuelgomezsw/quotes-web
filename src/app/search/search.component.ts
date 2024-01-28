@@ -34,6 +34,8 @@ import { NotificationService } from '../services/notification.service';
 export class SearchComponent {
   quotes: Quote[] = new Array();
   keyword: string = '';
+  author: string = '';
+  work: string = '';
 
   constructor(
     private quoteService: QuoteService,
@@ -46,7 +48,6 @@ export class SearchComponent {
   }
 
   onSearchByKeyword() {
-    console.log(this.keyword);
     this.quoteService.getQuotesByKeyword(this.keyword).subscribe({
       next: (response) => {
         this.quotes = response;
@@ -60,8 +61,32 @@ export class SearchComponent {
     });
   }
 
-  onClearKeyword() {
-    this.keyword = '';
-    this.quotes = new Array();
+  onSearchByAuthor() {
+    this.quoteService.getQuotesByAuthor(this.author).subscribe({
+      next: (response) => {
+        this.quotes = response;
+      },
+      error: (error) => {
+        if (error.status != 404) {
+          console.log('Error searching by author: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+        }
+      },
+    });
+
+  }
+
+  onSearchByWork() {
+    this.quoteService.getQuotesByWork(this.work).subscribe({
+      next: (response) => {
+        this.quotes = response;
+      },
+      error: (error) => {
+        if (error.status != 404) {
+          console.log('Error searching by work: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+        }
+      },
+    });
   }
 }
