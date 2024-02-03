@@ -8,11 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
-import { NotificationService } from "../services/notification.service";
-import { CookiesService } from "../services/cookies.service";
-import { QuoteService } from '../quote.service';
-import { Quote } from '../quote';
-import { environment } from '../../environments/environment';
+import { NotificationService } from "../../services/notification.service";
+import { CookiesService } from "../../services/cookies.service";
+import { QuoteService } from '../../quote.service';
+import { Quote } from '../../quote';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-new',
@@ -27,7 +27,7 @@ import { environment } from '../../environments/environment';
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
 })
-export class NewComponent {
+export class NewQuoteComponent {
   quote: Quote = {
     phrase: '',
   };

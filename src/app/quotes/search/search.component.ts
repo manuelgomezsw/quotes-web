@@ -10,10 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Quote } from '../quote';
-import { QuoteService } from '../quote.service';
-import { environment } from '../../environments/environment';
-import { NotificationService } from '../services/notification.service';
+import { Quote } from '../../quote';
+import { QuoteService } from '../../quote.service';
+import { environment } from '../../../environments/environment';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-search',
@@ -31,7 +31,7 @@ import { NotificationService } from '../services/notification.service';
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
-export class SearchComponent {
+export class SearchQuoteComponent {
   quotes: Quote[] = new Array();
   keyword: string = '';
   author: string = '';

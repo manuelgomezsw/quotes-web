@@ -8,10 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
-import { Quote } from '../quote';
-import { QuoteService } from '../quote.service';
-import { environment } from '../../environments/environment';
-import { NotificationService } from '../services/notification.service';
+import { Quote } from '../../quote';
+import { QuoteService } from '../../quote.service';
+import { environment } from '../../../environments/environment';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-edit',
@@ -20,7 +20,7 @@ import { NotificationService } from '../services/notification.service';
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
-export class EditComponent implements OnInit {
+export class EditQuoteComponent implements OnInit {
   quote: Quote = {
     phrase: '',
   };
