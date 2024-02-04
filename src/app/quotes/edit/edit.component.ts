@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
-import { Quote } from '../../quote';
+import { Quote } from '../../domain/quote';
 import { QuoteService } from '../../quote.service';
 import { environment } from '../../../environments/environment';
 import { NotificationService } from '../../services/notification.service';
@@ -16,7 +17,14 @@ import { NotificationService } from '../../services/notification.service';
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [FormsModule, CommonModule, MatInputModule, MatFormFieldModule, MatButtonModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+  ],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
@@ -35,7 +43,7 @@ export class EditQuoteComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle(environment.titleWebSite + ' - Editar');
-    
+
     const routeParams = this.route.snapshot.paramMap;
     this.quote.quote_id = Number(routeParams.get('quote_id'));
     this.getQuote();
@@ -51,7 +59,9 @@ export class EditQuoteComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error searching by keyword: ' + JSON.stringify(error));
-          this.notificationService.openSnackBar('Algo malo ocurrió consultando la frase. Intenta de nuevo.');
+          this.notificationService.openSnackBar(
+            'Algo malo ocurrió consultando la frase. Intenta de nuevo.'
+          );
         },
       });
     }
@@ -65,14 +75,18 @@ export class EditQuoteComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error editing quote: ' + JSON.stringify(error));
-        this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+        this.notificationService.openSnackBar(
+          'Algo malo ocurrió. Intenta de nuevo.'
+        );
       },
     });
   }
 
   onDeleteQuote() {
     if (this.quote.quote_id === undefined) {
-      this.notificationService.openSnackBar('Se requiere una frase para editar');
+      this.notificationService.openSnackBar(
+        'Se requiere una frase para editar'
+      );
     } else {
       this.quoteService.deleteQuote(this.quote.quote_id).subscribe({
         next: (response) => {
@@ -81,7 +95,9 @@ export class EditQuoteComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error deleting quote: ' + JSON.stringify(error));
-          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+          this.notificationService.openSnackBar(
+            'Algo malo ocurrió. Intenta de nuevo.'
+          );
         },
       });
     }

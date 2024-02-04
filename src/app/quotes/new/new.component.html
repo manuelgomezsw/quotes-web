@@ -1,4 +1,9 @@
-<mat-form-field class="full-width">
+<mat-toolbar>
+  <span>Memorizar frase</span>
+</mat-toolbar>
+
+<div class="custom-main-content">
+  <mat-form-field class="full-width">
     <mat-label>Frase a memorizar</mat-label>
     <textarea
       id="phraseInput"
@@ -10,7 +15,7 @@
       name="phrase"
     ></textarea>
   </mat-form-field>
-  
+
   <mat-form-field class="full-width">
     <mat-label>¿Quién es el autor?</mat-label>
     <input
@@ -19,9 +24,10 @@
       type="text"
       [(ngModel)]="quote.author"
       name="author"
+      onfocus="this.select()"
     />
   </mat-form-field>
-  
+
   <mat-form-field class="full-width">
     <mat-label>¿Cuál es la obra?</mat-label>
     <input
@@ -30,15 +36,17 @@
       type="text"
       [(ngModel)]="quote.work"
       name="work"
+      onfocus="this.select()"
     />
   </mat-form-field>
-  
+
   <button
     mat-flat-button
     type="button"
     color="primary"
     (click)="onMemorizeQuote()"
+    onfocus="this.select()"
   >
     MEMORIZAR
   </button>
-  
+</div>

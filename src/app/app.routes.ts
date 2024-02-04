@@ -9,6 +9,10 @@ import { SearchWordComponent } from './words/search/search.component';
 import { NewWordComponent } from './words/new/new.component';
 import { EditWordComponent } from './words/edit/edit.component';
 
+import { SearchReviewComponent } from './reviews/search/search.component';
+import { NewReviewComponent } from './reviews/new/new.component';
+import { EditReviewComponent } from './reviews/edit/edit.component';
+
 export const routes: Routes = [
   {
     path: 'quotes/search',
@@ -26,7 +30,7 @@ export const routes: Routes = [
     component: EditQuoteComponent
   },
   {
-    path: 'quotes/discovery',
+    path: 'quotes/discover',
     title: 'Discovery Quotes',
     component: DiscoverQuoteComponent
   },
@@ -45,4 +49,19 @@ export const routes: Routes = [
     title: 'Edit Word',
     component: EditWordComponent
   },
+  {
+    path: 'reviews/search',
+    title: 'Search Review',
+    component: SearchReviewComponent,
+  },
+  {
+    path: 'reviews/new',
+    title: 'New Review',
+    component: NewReviewComponent
+  },
+  {
+    path: 'reviews/edit/:word_id',
+    title: 'Edit Review',
+    component: EditReviewComponent
+  }
 ];

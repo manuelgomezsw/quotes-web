@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Quote } from '../../quote';
+import { Quote } from '../../domain/quote';
 import { QuoteService } from '../../quote.service';
 import { environment } from '../../../environments/environment';
 import { NotificationService } from '../../services/notification.service';
@@ -21,6 +22,7 @@ import { NotificationService } from '../../services/notification.service';
   imports: [
     FormsModule,
     CommonModule,
+    MatToolbarModule,
     RouterModule,
     MatInputModule,
     MatFormFieldModule,

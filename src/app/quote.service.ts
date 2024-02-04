@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../environments/environment';
-import { Quote } from './quote';
+import { Quote } from './domain/quote';
 
 @Injectable({
   providedIn: 'root'

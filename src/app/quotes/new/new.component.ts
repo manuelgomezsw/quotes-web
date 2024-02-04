@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NotificationService } from "../../services/notification.service";
 import { CookiesService } from "../../services/cookies.service";
 import { QuoteService } from '../../quote.service';
-import { Quote } from '../../quote';
+import { Quote } from '../../domain/quote';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -20,6 +21,7 @@ import { environment } from '../../../environments/environment';
   imports: [
     FormsModule,
     CommonModule,
+    MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
@@ -41,7 +43,7 @@ export class NewQuoteComponent {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle(environment.titleWebSite + ' - Memorizar');
+    this.titleService.setTitle(environment.titleWebSite + ' - Memorizar Frase');
     this.getRememberedCookies();
   }
 

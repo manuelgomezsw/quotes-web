@@ -1,1 +1,40 @@
-<p>new works!</p>
+<mat-toolbar>
+  <span>Memorizar palabra</span>
+</mat-toolbar>
+
+<div class="custom-main-content">
+  <mat-form-field class="full-width">
+    <mat-label>¿Cuál es la palabra a memorizar?</mat-label>
+    <input
+      id="wordNameInput"
+      matInput
+      type="text"
+      [(ngModel)]="word.name"
+      name="wordName"
+      onfocus="this.select()"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>¿Cuál es el significado de la palabra?</mat-label>
+    <textarea
+      id="descriptionInput"
+      cols="30"
+      rows="7"
+      matInput
+      type="text"
+      [(ngModel)]="word.description"
+      name="description"
+    ></textarea>
+  </mat-form-field>
+
+  <button
+    mat-flat-button
+    type="button"
+    color="primary"
+    (click)="onMemorizeWord()"
+    onfocus="this.select()"
+  >
+    MEMORIZAR
+  </button>
+</div>
