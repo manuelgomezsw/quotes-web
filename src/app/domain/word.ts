@@ -1,5 +1,5 @@
 export interface Word {
-    name: string;
-    description?: string;
+    word: string;
+    meaning?: string;
     word_id?: number;
 }
