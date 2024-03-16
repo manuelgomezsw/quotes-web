@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
     titleWebSite: 'Tinta Indeleble',
-    quotesUrl: 'http://localhost:8080/quote',
+    quotesUrl: 'http://localhost:8080/quotes',
     wordsUrl: 'http://localhost:8080/words'
 };

@@ -18,7 +18,7 @@ export class WordService {
   }
 
   getByKeyword(keyword: string): Observable<any> {
-    return this.http.get(environment.wordsUrl + "/search/" + keyword);
+    return this.http.get(environment.wordsUrl + "/keyword/" + keyword);
   }
 
   addWord(word: Word): Observable<any> {

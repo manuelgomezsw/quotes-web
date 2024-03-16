@@ -9,12 +9,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
-import { NotificationService } from "../../services/notification.service";
+import { NotificationService } from '../../services/notification.service';
 import { WordService } from '../../client/word.service';
 
 import { Word } from '../../domain/word';
 import { environment } from '../../../environments/environment';
-
 
 @Component({
   selector: 'app-new',
@@ -43,7 +42,9 @@ export class NewWordComponent {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle(environment.titleWebSite + ' - Memorizar Palabra');
+    this.titleService.setTitle(
+      environment.titleWebSite + ' - Memorizar Palabra'
+    );
   }
 
   onMemorizeWord() {
@@ -53,15 +54,20 @@ export class NewWordComponent {
         this.notificationService.openSnackBar('Palabra memorizada');
       },
       error: (error) => {
-        console.log('Error adding new word: ' + JSON.stringify(error));
-        this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+        if (error.status == 409) {
+          this.notificationService.openSnackBar('La palabra ya existe');
+        } else {
+          console.log('Error adding new word: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar(
+            'Algo malo ocurrió. Intenta de nuevo.'
+          );
+        }
       },
     });
-    this.notificationService.openSnackBar('Palabra memorizada');
   }
 
   clearForm() {
-    this.word.word = "";
-    this.word.meaning = "";
+    this.word.word = '';
+    this.word.meaning = '';
   }
 }

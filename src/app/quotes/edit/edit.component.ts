@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
 import { Quote } from '../../domain/quote';
-import { QuoteService } from '../../quote.service';
+import { QuoteService } from '../../client/quote.service';
 import { environment } from '../../../environments/environment';
 import { NotificationService } from '../../services/notification.service';
 
