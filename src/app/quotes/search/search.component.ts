@@ -12,7 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 import { Quote } from '../../domain/quote';
-import { QuoteService } from '../../quote.service';
+import { QuoteService } from '../../client/quote.service';
 import { environment } from '../../../environments/environment';
 import { NotificationService } from '../../services/notification.service';
 
@@ -55,9 +55,11 @@ export class SearchQuoteComponent {
         this.quotes = response;
       },
       error: (error) => {
-        if (error.status != 404) {
+        if (error.status == 404) {
+          this.notificationService.openSnackBar('No tenemos coincidencias con lo que buscas...');
+        } else {
           console.log('Error searching by keyword: ' + JSON.stringify(error));
-          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+          this.notificationService.openSnackBar('Ups... Algo malo ocurrió. Intenta de nuevo.');
         }
       },
     });

@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NotificationService } from "../../services/notification.service";
 import { CookiesService } from "../../services/cookies.service";
-import { QuoteService } from '../../quote.service';
+import { QuoteService } from '../../client/quote.service';
 import { Quote } from '../../domain/quote';
 import { environment } from '../../../environments/environment';
 

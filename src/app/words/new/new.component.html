@@ -9,7 +9,7 @@
       id="wordNameInput"
       matInput
       type="text"
-      [(ngModel)]="word.name"
+      [(ngModel)]="word.word"
       name="wordName"
       onfocus="this.select()"
     />
@@ -23,7 +23,7 @@
       rows="7"
       matInput
       type="text"
-      [(ngModel)]="word.description"
+      [(ngModel)]="word.meaning"
       name="description"
     ></textarea>
   </mat-form-field>
@@ -33,7 +33,6 @@
     type="button"
     color="primary"
     (click)="onMemorizeWord()"
-    onfocus="this.select()"
   >
     MEMORIZAR
   </button>
