@@ -1,0 +1,40 @@
+<mat-toolbar>
+    <span>Memorizar opinión</span>
+  </mat-toolbar>
+  
+  <div class="custom-main-content">
+    <mat-form-field class="full-width">
+      <mat-label>¿Cuál será el título de la opinión?</mat-label>
+      <input
+        id="wordNameInput"
+        matInput
+        type="text"
+        [(ngModel)]="review.title"
+        name="wordName"
+        onfocus="this.select()"
+      />
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <mat-label>¿Cuál es la opinión?</mat-label>
+      <textarea
+        id="descriptionInput"
+        cols="30"
+        rows="20"
+        matInput
+        type="text"
+        [(ngModel)]="review.review"
+        name="description"
+      ></textarea>
+    </mat-form-field>
+  
+    <button
+      mat-flat-button
+      type="button"
+      color="primary"
+      (click)="onMemorizeReview()"
+    >
+      MEMORIZAR
+    </button>
+  </div>
+  
