@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,7 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
 import { NotificationService } from '../../services/notification.service';
-import { WordService } from '../../client/word.service';
+import { ReviewService } from '../../client/review.service';
 
 import { Review } from '../../domain/review';
 import { environment } from '../../../environments/environment';
@@ -36,10 +35,9 @@ export class NewReviewComponent {
   };
 
   constructor(
-    private router: Router,
     private titleService: Title,
     private notificationService: NotificationService,
-    private wordService: WordService
+    private reviewService: ReviewService
   ) {}
 
   ngOnInit() {
@@ -49,23 +47,18 @@ export class NewReviewComponent {
   }
 
   onMemorizeReview() {
-    // this.wordService.addWord(this.word).subscribe({
-    //   next: () => {
-    //     this.clearForm();
-    //     this.notificationService.openSnackBar('Palabra memorizada');
-    //   },
-    //   error: (error) => {
-    //     if (error.status == 409) {
-    //       this.notificationService.openSnackBar('La palabra ya existe');
-    //     } else {
-    //       console.log('Error adding new word: ' + JSON.stringify(error));
-    //       this.notificationService.openSnackBar(
-    //         'Algo malo ocurrió. Intenta de nuevo.'
-    //       );
-    //     }
-    //   },
-    // });
-    this.notificationService.openSnackBar('Opinión memorizada');
+    this.reviewService.add(this.review).subscribe({
+      next: () => {
+        this.clearForm();
+        this.notificationService.openSnackBar('Opinión memorizada');
+      },
+      error: (error) => {
+        console.log('Error adding new review: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar(
+            'Algo malo ocurrió. Intenta de nuevo.'
+          );
+      },
+    });
   }
 
   clearForm() {
