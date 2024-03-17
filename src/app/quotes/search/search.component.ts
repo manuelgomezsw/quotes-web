@@ -71,13 +71,14 @@ export class SearchQuoteComponent {
         this.quotes = response;
       },
       error: (error) => {
-        if (error.status != 404) {
-          console.log('Error searching by author: ' + JSON.stringify(error));
-          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+        if (error.status == 404) {
+          this.notificationService.openSnackBar('No tenemos coincidencias con lo que buscas...');
+        } else {
+          console.log('Error searching by keyword: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar('Ups... Algo malo ocurrió. Intenta de nuevo.');
         }
       },
     });
-
   }
 
   onSearchByWork() {
@@ -86,9 +87,11 @@ export class SearchQuoteComponent {
         this.quotes = response;
       },
       error: (error) => {
-        if (error.status != 404) {
-          console.log('Error searching by work: ' + JSON.stringify(error));
-          this.notificationService.openSnackBar('Algo malo ocurrió. Intenta de nuevo.');
+        if (error.status == 404) {
+          this.notificationService.openSnackBar('No tenemos coincidencias con lo que buscas...');
+        } else {
+          console.log('Error searching by keyword: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar('Ups... Algo malo ocurrió. Intenta de nuevo.');
         }
       },
     });

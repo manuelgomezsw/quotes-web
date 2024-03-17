@@ -30,6 +30,10 @@ export class QuoteService {
     return this.http.get(environment.quotesUrl + "/work/" + work);
   }
 
+  getTopics(): Observable<any> {
+    return this.http.get(environment.quotesUrl + "/topics");
+  }
+
   addQuote(quote: Quote): Observable<any> {
     return this.http.post(environment.quotesUrl, quote);
   }
