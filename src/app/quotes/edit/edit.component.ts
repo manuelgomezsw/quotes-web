@@ -42,7 +42,7 @@ export class EditQuoteComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle(environment.titleWebSite + ' - Editar');
+    this.titleService.setTitle(environment.titleWebSite + ' - Editar Frase');
 
     const routeParams = this.route.snapshot.paramMap;
     this.quote.quote_id = Number(routeParams.get('quote_id'));

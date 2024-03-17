@@ -10,9 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
 import { NotificationService } from '../../services/notification.service';
-import { WordService } from '../../client/word.service';
+import { ReviewService } from '../../client/review.service';
 
-import { Word } from '../../domain/word';
+import { Review } from '../../domain/review';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -29,79 +29,74 @@ import { environment } from '../../../environments/environment';
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
-export class EditWordComponent {
-  word: Word = {
-    word: '',
+export class EditReviewComponent {
+  review: Review = {
+    title: '',
+    review: ''
   };
 
   constructor(
-    private wordService: WordService,
     private route: ActivatedRoute,
     private router: Router,
     private titleService: Title,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private reviewService: ReviewService
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle(
-      environment.titleWebSite + ' - Editar Palabra'
-    );
+    this.titleService.setTitle(environment.titleWebSite + ' - Editar Opinión');
 
     const routeParams = this.route.snapshot.paramMap;
-    this.word.word_id = Number(routeParams.get('word_id'));
-    this.getWord();
+    this.review.review_id = Number(routeParams.get('review_id'));
+    this.getReview();
   }
 
-  getWord() {
-    if (this.word.word_id === undefined) {
-      this.router.navigate(['/words']);
+  getReview() {
+    if (this.review.review_id === undefined) {
+      this.router.navigate(['/quotes']);
     } else {
-      this.wordService.getByID(this.word.word_id).subscribe({
+      this.reviewService.getByID(this.review.review_id).subscribe({
         next: (response) => {
-          this.word = response;
+          this.review = response;
         },
         error: (error) => {
-            console.log('Error getting word: ' + JSON.stringify(error));
-            this.notificationService.openSnackBar(
-              'Algo malo ocurrió. Intenta de nuevo.'
-            );
+          console.error('Error searching by title: ' + JSON.stringify(error));
+          this.notificationService.openSnackBar(
+            'Algo malo ocurrió consultando la frase. Intenta de nuevo.'
+          );
         },
       });
     }
   }
 
-  onMemorizeWord() {
-    this.wordService.editWord(this.word).subscribe({
-      next: (response) => {
+  onMemorizeReview() {
+    this.reviewService.add(this.review).subscribe({
+      next: () => {
         this.router.navigate(['/']);
-        this.notificationService.openSnackBar('Palabra editada');
+        this.notificationService.openSnackBar('Opinión editada');
       },
       error: (error) => {
-        if (error.status == 409) {
-          this.notificationService.openSnackBar('La palabra ya existe');
-        } else {
-          console.log('Error editing word: ' + JSON.stringify(error));
+        console.log('Error adding new review: ' + JSON.stringify(error));
           this.notificationService.openSnackBar(
             'Algo malo ocurrió. Intenta de nuevo.'
           );
-        }
       },
     });
   }
 
-  onDeleteWord() {
-    if (this.word.word_id === undefined) {
+  onDeleteReview() {
+    if (this.review.review_id === undefined) {
       this.notificationService.openSnackBar(
-        'Se requiere una palabra para editar'
+        'Se requiere una opinión para editar'
       );
     } else {
-      this.wordService.deleteWord(this.word.word_id).subscribe({
+      this.reviewService.delete(this.review.review_id).subscribe({
         next: (response) => {
           this.router.navigate(['/']);
-          this.notificationService.openSnackBar('Palabra eliminada');
+          this.notificationService.openSnackBar('Opinión eliminada');
         },
         error: (error) => {
-          console.error('Error deleting word: ' + JSON.stringify(error));
+          console.error('Error deleting review: ' + JSON.stringify(error));
           this.notificationService.openSnackBar(
             'Algo malo ocurrió. Intenta de nuevo.'
           );
