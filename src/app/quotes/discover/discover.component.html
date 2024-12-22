@@ -6,8 +6,8 @@
   <mat-chip-listbox aria-label="Fish selection">
     <mat-chip-option
       *ngFor="let topic of topics"
-      (selectionChange)="getQuotes(topic.value, topic.type, $event)"
-      >{{ topic.value }}</mat-chip-option
+      (selectionChange)="getQuotes(topic, $event)"
+      >{{ topic }}</mat-chip-option
     >
   </mat-chip-listbox>
 </div>

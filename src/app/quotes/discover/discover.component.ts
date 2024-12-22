@@ -30,7 +30,7 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class DiscoverQuoteComponent {
   quotes: Quote[] = new Array();
-  topics: Topic[] = new Array();
+  topics: string[] = new Array();
 
   constructor(
     private quoteService: QuoteService,
@@ -59,50 +59,16 @@ export class DiscoverQuoteComponent {
     });
   }
 
-  getQuotes(topicValue: any, topicType: any, event: any) {
-    if (topicType == 'author') {
-      this.getQuotesByAuthor(topicValue, event);
-    }
-
-    if (topicType == 'work') {
-      this.getQuotesByWork(topicValue, event);
-    }
-  }
-
-  getQuotesByAuthor(author: string, event: any) {
+  getQuotes(topic: string, event: any) {
     if (event.selected) {
-      this.quoteService.getQuotesByAuthor(author).subscribe({
+      this.quoteService.getQuotesByKeyword(topic).subscribe({
         next: (response) => {
           this.quotes = response;
         },
         error: (error) => {
           if (error.status == 404) {
             this.notificationService.openSnackBar(
-              'No tenemos frases asociadas al autor seleccionado...'
-            );
-          } else {
-            console.log('Error searching by keyword: ' + JSON.stringify(error));
-            this.notificationService.openSnackBar(
-              'Ups... Algo malo ocurrió. Intenta de nuevo.'
-            );
-          }
-        },
-      });
-    } else {
-      this.quotes = [];
-    }
-  }
-
-  getQuotesByWork(work: string, event: any) {
-    if (event.selected) {
-      this.quoteService.getQuotesByWork(work).subscribe({
-        next: (response) => {
-          this.quotes = response;
-        },
-        error: (error) => {
-          if (error.status == 404) {
-            this.notificationService.openSnackBar(
-              'No tenemos frases asociadas a la obra seleccionada...'
+              'No tenemos frases asociadas a la palabra clave seleccionada...'
             );
           } else {
             console.log('Error searching by keyword: ' + JSON.stringify(error));
