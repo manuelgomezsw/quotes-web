@@ -16,36 +16,23 @@
     ></textarea>
   </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <mat-label>¿Quién es el autor?</mat-label>
-    <input
-      id="authorInput"
-      matInput
-      type="text"
-      [(ngModel)]="quote.author"
-      name="author"
-      onfocus="this.select()"
-    />
-  </mat-form-field>
+  <app-autocomplete-input
+    label="¿Quién es el autor?"
+    [control]="authorCtrl"
+    [filteredOptions]="authorFilteredOptions">
+  </app-autocomplete-input>
 
-  <mat-form-field class="full-width">
-    <mat-label>¿Cuál es la obra?</mat-label>
-    <input
-      id="workInput"
-      matInput
-      type="text"
-      [(ngModel)]="quote.work"
-      name="work"
-      onfocus="this.select()"
-    />
-  </mat-form-field>
+  <app-autocomplete-input
+    label="¿Cuál es la obra?"
+    [control]="workCtrl"
+    [filteredOptions]="workFilteredOptions">
+  </app-autocomplete-input>
 
   <button
     mat-flat-button
     type="button"
     color="primary"
     (click)="onMemorizeQuote()"
-    onfocus="this.select()"
   >
     MEMORIZAR
   </button>

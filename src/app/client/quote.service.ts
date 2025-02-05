@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
-import { environment } from '../../environments/environment';
-import { Quote } from '../domain/quote';
+import {environment} from '../../environments/environment';
+import {Quote} from '../domain/quote';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,15 @@ export class QuoteService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   getQuoteByID(quoteID: number): Observable<any> {
     return this.http.get(environment.quotesUrl + "/" + quoteID.toString());
   }
 
   getQuotesByKeyword(keyword: string): Observable<any> {
-    return this.http.get(environment.quotesUrl + "/keyword/" + keyword);
+    return this.http.get(environment.quotesUrl + "/keyword/" + keyword); // Se debe cambiar el endpoint para que reciba en el body el array de keywords.
   }
 
   getQuotesByAuthor(author: string): Observable<any> {

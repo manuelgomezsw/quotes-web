@@ -16,31 +16,21 @@
     </button>
   </mat-form-field>
 
-  <mat-form-field style="width: 100%">
-    <mat-label>¿Por cuál autor quieres buscar?</mat-label>
-    <input
-      matInput
-      type="text"
-      [(ngModel)]="author"
-      (keyup.enter)="onSearchByAuthor()"
-    />
-    <button mat-icon-button matSuffix (click)="onSearchByAuthor()">
-      <mat-icon>search</mat-icon>
-    </button>
-  </mat-form-field>
+  <app-autocomplete-input
+    label="¿Quién es el autor?"
+    [isSearchMode]="true"
+    [control]="authorCtrl"
+    [filteredOptions]="authorFilteredOptions"
+    (search)="onSearchByAuthor($event)">
+  </app-autocomplete-input>
 
-  <mat-form-field style="width: 100%">
-    <mat-label>¿Por cuál obra quieres buscar?</mat-label>
-    <input
-      matInput
-      type="text"
-      [(ngModel)]="work"
-      (keyup.enter)="onSearchByWork()"
-    />
-    <button mat-icon-button matSuffix (click)="onSearchByWork()">
-      <mat-icon>search</mat-icon>
-    </button>
-  </mat-form-field>
+  <app-autocomplete-input
+    label="¿Cuál es la obra?"
+    [isSearchMode]="true"
+    [control]="workCtrl"
+    [filteredOptions]="workFilteredOptions"
+    (search)="onSearchByWork($event)">
+  </app-autocomplete-input>
 
   <div *ngIf="quotes.length > 0">
     <h2>Frases a recordar</h2>

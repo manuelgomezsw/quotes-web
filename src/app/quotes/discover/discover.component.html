@@ -2,14 +2,12 @@
   <span>Descubre frases</span>
 </mat-toolbar>
 
-<div>
-  <mat-chip-listbox aria-label="Fish selection">
-    <mat-chip-option
-      *ngFor="let topic of topics"
-      (selectionChange)="getQuotes(topic, $event)"
-      >{{ topic }}</mat-chip-option
-    >
-  </mat-chip-listbox>
+<div class="scroll-container">
+  <mat-selection-list #topic (selectionChange)="onSelectionChange($event)">
+    <mat-list-option *ngFor="let topic of topics" [value]="topic">
+      {{ topic }}
+    </mat-list-option>
+  </mat-selection-list>
 </div>
 
 <div *ngIf="quotes.length > 0">
