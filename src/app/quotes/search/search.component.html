@@ -3,6 +3,11 @@
 </mat-toolbar>
 
 <div class="custom-main-content">
+  <div *ngIf="isLoading" class="loading-container">
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
   <mat-form-field style="width: 100%">
     <mat-label>¿Por cuál palabra clave quieres buscar?</mat-label>
     <input
@@ -15,7 +20,6 @@
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
-
   <app-autocomplete-input
     label="¿Quién es el autor?"
     [isSearchMode]="true"
@@ -23,7 +27,6 @@
     [filteredOptions]="authorFilteredOptions"
     (search)="onSearchByAuthor($event)">
   </app-autocomplete-input>
-
   <app-autocomplete-input
     label="¿Cuál es la obra?"
     [isSearchMode]="true"
@@ -52,7 +55,7 @@
         <button
           mat-button
           color="primary"
-          [routerLink]="['/quotes/edit/' + quote.quote_id]"
+          [routerLink]="['/quotes/' + quote.quote_id + '/edit' ]"
         >
           EDITAR
         </button>

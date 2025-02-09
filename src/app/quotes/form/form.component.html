@@ -1,6 +1,11 @@
 <mat-toolbar>
-  <span>Memorizar frase</span>
+  <span>{{ isEditMode ? 'Actualizar frase' : 'Memorizar frase' }}</span>
 </mat-toolbar>
+<div *ngIf="isLoading" class="loading-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
 
 <div class="custom-main-content">
   <mat-form-field class="full-width">
@@ -19,21 +24,24 @@
   <app-autocomplete-input
     label="¿Quién es el autor?"
     [control]="authorCtrl"
-    [filteredOptions]="authorFilteredOptions">
+    [filteredOptions]="authorFilteredOptions"
+    (selectedValue)="onSelectedAuthor($event)">
   </app-autocomplete-input>
 
   <app-autocomplete-input
     label="¿Cuál es la obra?"
     [control]="workCtrl"
-    [filteredOptions]="workFilteredOptions">
+    [filteredOptions]="workFilteredOptions"
+    (selectedValue)="onSelectedWork($event)">
   </app-autocomplete-input>
 
   <button
     mat-flat-button
     type="button"
     color="primary"
-    (click)="onMemorizeQuote()"
+    (click)="onSave()"
   >
     MEMORIZAR
   </button>
+  <button mat-button color="warn" *ngIf="isEditMode" (click)="onDeleteQuote()">ELIMINAR</button>
 </div>

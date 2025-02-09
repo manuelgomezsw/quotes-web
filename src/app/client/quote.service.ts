@@ -47,7 +47,7 @@ export class QuoteService {
     return this.http.put(environment.quotesUrl + "/" + quote.quote_id, quote);
   }
 
-  deleteQuote(quoteID: number): Observable<any> {
+    deleteQuote(quoteID: number | undefined): Observable<any> {
     return this.http.delete(environment.quotesUrl + "/" + quoteID);
   }
 }

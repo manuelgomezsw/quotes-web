@@ -22,25 +22,27 @@ import {MiscService} from "../../client/misc.service";
 import {SharedModule} from '../../shared/shared.module';
 import {filterOptions} from "../../shared/utils/filter.utils";
 import {setupAutocompleteFromService} from "../../shared/utils/autocomplete-utils";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    MatToolbarModule,
-    RouterModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatAutocompleteModule,
-    MatOptionModule,
-    ReactiveFormsModule,
-    SharedModule,
-  ],
+    imports: [
+        FormsModule,
+        CommonModule,
+        MatToolbarModule,
+        RouterModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        MatAutocompleteModule,
+        MatOptionModule,
+        ReactiveFormsModule,
+        SharedModule,
+        MatProgressBarModule,
+    ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
@@ -49,6 +51,7 @@ export class SearchQuoteComponent implements OnInit {
   keyword: string = '';
   author: string = '';
   work: string = '';
+  isLoading: boolean = false;
 
   // Controles para el autocomplete
   authorCtrl = new FormControl();
@@ -82,10 +85,12 @@ export class SearchQuoteComponent implements OnInit {
     );
   }
 
-  onSearchByKeyword() {
+  protected onSearchByKeyword() {
+    this.isLoading = true;
     this.quoteService.getQuotesByKeyword(this.keyword).subscribe({
       next: (response) => {
         this.quotes = response;
+        this.isLoading = false;
       },
       error: (error) => {
         if (error.status == 404) {
@@ -94,15 +99,18 @@ export class SearchQuoteComponent implements OnInit {
           console.log('Error searching by keyword: ' + JSON.stringify(error));
           this.notificationService.openSnackBar('Ups... Algo malo ocurrió. Intenta de nuevo.');
         }
+        this.isLoading = false;
       },
     });
   }
 
-  onSearchByAuthor(selectedAuthor: string) {
+  protected onSearchByAuthor(selectedAuthor: string) {
+    this.isLoading = true;
     this.author = selectedAuthor;
     this.quoteService.getQuotesByAuthor(selectedAuthor).subscribe({
       next: (response) => {
         this.quotes = response;
+        this.isLoading = false;
       },
       error: (error) => {
         if (error.status == 404) {
@@ -111,15 +119,18 @@ export class SearchQuoteComponent implements OnInit {
           console.log('Error searching by keyword: ' + JSON.stringify(error));
           this.notificationService.openSnackBar('Ups... Algo malo ocurrió. Intenta de nuevo.');
         }
+        this.isLoading = false;
       },
     });
   }
 
-  onSearchByWork(selectedWork: string) {
+  protected onSearchByWork(selectedWork: string) {
+    this.isLoading = true;
     this.work = selectedWork;
     this.quoteService.getQuotesByWork(selectedWork).subscribe({
       next: (response) => {
         this.quotes = response;
+        this.isLoading = false;
       },
       error: (error) => {
         if (error.status == 404) {
@@ -128,6 +139,7 @@ export class SearchQuoteComponent implements OnInit {
           console.log('Error searching by keyword: ' + JSON.stringify(error));
           this.notificationService.openSnackBar('Ups... Algo malo ocurrió. Intenta de nuevo.');
         }
+        this.isLoading = false;
       },
     });
   }

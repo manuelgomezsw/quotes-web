@@ -1,18 +1,17 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
-import { SearchQuoteComponent } from './quotes/search/search.component';
-import { NewQuoteComponent } from './quotes/new/new.component';
-import { EditQuoteComponent } from './quotes/edit/edit.component';
-import { DiscoverQuoteComponent } from './quotes/discover/discover.component';
+import {SearchQuoteComponent} from './quotes/search/search.component';
+import {DiscoverQuoteComponent} from './quotes/discover/discover.component';
 
-import { SearchWordComponent } from './words/search/search.component';
-import { NewWordComponent } from './words/new/new.component';
-import { EditWordComponent } from './words/edit/edit.component';
+import {SearchWordComponent} from './words/search/search.component';
+import {NewWordComponent} from './words/new/new.component';
+import {EditWordComponent} from './words/edit/edit.component';
 
-import { SearchReviewComponent } from './reviews/search/search.component';
-import { NewReviewComponent } from './reviews/new/new.component';
-import { EditReviewComponent } from './reviews/edit/edit.component';
+import {SearchReviewComponent} from './reviews/search/search.component';
+import {NewReviewComponent} from './reviews/new/new.component';
+import {EditReviewComponent} from './reviews/edit/edit.component';
 import {HomeComponent} from "./home/home.component";
+import {QuoteFormComponent} from "./quotes/form/form.component";
 
 export const routes: Routes = [
   {
@@ -28,12 +27,12 @@ export const routes: Routes = [
   {
     path: 'quotes/new',
     title: 'New Quote',
-    component: NewQuoteComponent
+    component: QuoteFormComponent
   },
   {
-    path: 'quotes/edit/:quote_id',
+    path: 'quotes/:quote_id/edit',
     title: 'Edit Quote',
-    component: EditQuoteComponent
+    component: QuoteFormComponent
   },
   {
     path: 'quotes/discover',
@@ -51,7 +50,7 @@ export const routes: Routes = [
     component: NewWordComponent
   },
   {
-    path: 'words/edit/:word_id',
+    path: 'words/:word_id/edit',
     title: 'Edit Word',
     component: EditWordComponent
   },
@@ -66,7 +65,7 @@ export const routes: Routes = [
     component: NewReviewComponent
   },
   {
-    path: 'reviews/edit/:review_id',
+    path: 'reviews/:review_id/edit',
     title: 'Edit Review',
     component: EditReviewComponent
   },

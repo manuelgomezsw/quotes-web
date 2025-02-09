@@ -1,7 +1,7 @@
 <mat-toolbar>
     <span>Buscar Opinión</span>
   </mat-toolbar>
-  
+
   <div class="custom-main-content">
     <mat-form-field style="width: 100%">
       <mat-label>¿Cuál es el título de la opinión?</mat-label>
@@ -15,7 +15,7 @@
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
-  
+
     <div *ngIf="reviews.length > 0">
       <h2>Opiniones a recordar</h2>
       <mat-card class="quote-card" *ngFor="let review of reviews">
@@ -28,7 +28,7 @@
           <button
             mat-button
             color="primary"
-            [routerLink]="['/reviews/edit/' + review.review_id]"
+            [routerLink]="['/reviews/' + review.review_id + '/edit']"
           >
             EDITAR
           </button>
@@ -36,4 +36,3 @@
       </mat-card>
     </div>
   </div>
-  

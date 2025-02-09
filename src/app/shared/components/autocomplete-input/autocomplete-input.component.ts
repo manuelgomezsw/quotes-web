@@ -33,13 +33,23 @@ export class AutocompleteInputComponent {
   @Input() control: FormControl = new FormControl();
   // Observable con las opciones filtradas (por ejemplo, Observable<string[]>)
   @Input() filteredOptions: Observable<string[]> | undefined;
-  // Este output permitirá comunicar al componente padre la opción seleccionada.
+  // Este output permitirá comunicar al componente padre el evento de consultar.
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
+  // Este output permitirá comunicar al componente padre la opción seleccionada.
+  @Output() selectedValue: EventEmitter<string> = new EventEmitter<string>();
 
   onSearch(event: MouseEvent): void {
     // Obtenemos el valor actual del control
     const inputValue = this.control.value;
     // Emitimos el valor mediante el output "search"
     this.search.emit(inputValue);
+  }
+
+  onSelectedValueChange(selectedValue: MatAutocompleteSelectedEvent): void {
+    this.selectedValue.emit(selectedValue.option.value);
+  }
+
+  onFocusOut() {
+    this.selectedValue.emit(this.control.value);
   }
 }

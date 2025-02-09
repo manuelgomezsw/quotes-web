@@ -5,11 +5,12 @@
     matInput
     [formControl]="control"
     [matAutocomplete]="auto"
+    (focusout)="onFocusOut()"
   />
   <button mat-icon-button matSuffix *ngIf="isSearchMode" (click)="onSearch($event)">
     <mat-icon>search</mat-icon>
   </button>
-  <mat-autocomplete #auto="matAutocomplete">
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectedValueChange($event)">
     <mat-option
       *ngFor="let option of filteredOptions | async"
       [value]="option">

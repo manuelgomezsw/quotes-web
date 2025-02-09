@@ -1,9 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {RouterLink} from "@angular/router";
+import {NgIf} from "@angular/common";
 
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 import {QuoteService} from "../../../client/quote.service";
 import {WordService} from "../../../client/word.service";
@@ -15,7 +17,9 @@ import {WordService} from "../../../client/word.service";
     RouterLink,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    NgIf,
+    MatProgressBarModule
   ],
   templateUrl: './random-item.component.html',
   styleUrl: './random-item.component.css'
@@ -26,6 +30,7 @@ export class RandomItemComponent implements OnInit {
    */
   @Input() type: 'quote' | 'word' = 'quote';
   item: any;
+  isLoading = false;
 
   constructor(
     private quoteService: QuoteService,
@@ -43,8 +48,8 @@ export class RandomItemComponent implements OnInit {
     }
 
     return this.type === 'quote'
-      ? '/quotes/edit/' + this.item.quote_id
-      : '/words/edit/' + this.item.word_id;
+      ? '/quotes/' + this.item.quote_id + '/edit'
+      : '/words/' + this.item.word_id + '/edit';
   }
 
   get titleText(): string {
@@ -72,6 +77,8 @@ export class RandomItemComponent implements OnInit {
   }
 
   protected getRandomItem(): void {
+    this.clearContent();
+
     if (this.type === 'quote') {
       this.getRandomQuote();
     }
@@ -82,16 +89,34 @@ export class RandomItemComponent implements OnInit {
   }
 
   private getRandomQuote() {
+    this.isLoading = true;
     this.quoteService.getRandomQuote().subscribe({
-      next: (item) => this.item = item,
-      error: (err) => console.error('Error al obtener cita aleatoria', err)
+      next: (item) => {
+        this.item = item;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error al obtener cita aleatoria', err);
+        this.isLoading = false;
+      }
     });
   }
 
   private getRandomWord() {
+    this.isLoading = true;
     this.wordService.getRandomWord().subscribe({
-      next: (item) => this.item = item,
-      error: (err) => console.error('Error al obtener palabra aleatoria', err)
+      next: (item) => {
+        this.item = item;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error al obtener palabra aleatoria', err);
+        this.isLoading = false;
+      }
     });
+  }
+
+  private clearContent(): void {
+    this.item = null;
   }
 }
