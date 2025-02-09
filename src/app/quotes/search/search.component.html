@@ -32,7 +32,7 @@
     (search)="onSearchByWork($event)">
   </app-autocomplete-input>
 
-  <div *ngIf="quotes.length > 0">
+  <div class="quote-list-container" *ngIf="quotes.length > 0">
     <h2>Frases a recordar</h2>
     <mat-card class="quote-card" *ngFor="let quote of quotes">
       <mat-card-header>

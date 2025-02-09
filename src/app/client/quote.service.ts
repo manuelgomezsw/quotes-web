@@ -35,6 +35,10 @@ export class QuoteService {
     return this.http.get(environment.quotesUrl + "/topics");
   }
 
+  getRandomQuote(): Observable<any> {
+    return this.http.get(environment.quotesUrl + "/random");
+  }
+
   addQuote(quote: Quote): Observable<any> {
     return this.http.post(environment.quotesUrl, quote);
   }

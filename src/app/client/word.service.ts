@@ -21,6 +21,10 @@ export class WordService {
     return this.http.get(environment.wordsUrl + "/keyword/" + keyword);
   }
 
+  getRandomWord(): Observable<any> {
+    return this.http.get(environment.wordsUrl + "/random");
+  }
+
   addWord(word: Word): Observable<any> {
     return this.http.post(environment.wordsUrl, word);
   }

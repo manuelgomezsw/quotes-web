@@ -12,8 +12,14 @@ import { EditWordComponent } from './words/edit/edit.component';
 import { SearchReviewComponent } from './reviews/search/search.component';
 import { NewReviewComponent } from './reviews/new/new.component';
 import { EditReviewComponent } from './reviews/edit/edit.component';
+import {HomeComponent} from "./home/home.component";
 
 export const routes: Routes = [
+  {
+    path: '',
+    title: 'Home',
+    component: HomeComponent,
+  },
   {
     path: 'quotes/search',
     title: 'Search Quotes',

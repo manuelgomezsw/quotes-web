@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, RouterOutlet} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
-import { MatMenuModule } from '@angular/material/menu';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +18,16 @@ import { environment } from '../environments/environment';
     RouterOutlet,
     MatMenuModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  constructor(private titleService: Title) {}
+export class AppComponent implements OnInit {
+
+  constructor(
+    private titleService: Title) {
+  }
 
   ngOnInit() {
     this.titleService.setTitle(environment.titleWebSite);
