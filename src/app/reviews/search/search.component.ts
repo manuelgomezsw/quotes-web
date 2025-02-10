@@ -15,6 +15,7 @@ import { Review } from '../../domain/review';
 import { ReviewService } from '../../client/review.service';
 import { environment } from '../../../environments/environment';
 import { NotificationService } from '../../services/notification.service';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @Component({
   selector: 'app-search',
@@ -29,6 +30,7 @@ import { NotificationService } from '../../services/notification.service';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatProgressBarModule,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
@@ -36,6 +38,7 @@ import { NotificationService } from '../../services/notification.service';
 export class ReviewSearchComponent implements OnInit {
   reviews: Review[] = [];
   keyword: string = '';
+  isLoading: boolean = false;
 
   constructor(
     private reviewService: ReviewService,
@@ -44,13 +47,15 @@ export class ReviewSearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle(environment.titleWebSite + ' - Descubrir Opinión');
+    this.titleService.setTitle(environment.titleWebSite + ' - Buscar Opinión');
   }
 
   onSearchByKeyword() {
+    this.isLoading = true;
     this.reviewService.getByTitle(this.keyword).subscribe({
       next: (response) => {
         this.reviews = response;
+        this.isLoading = false;
       },
       error: (error) => {
         if (error.status == 404) {
@@ -63,6 +68,7 @@ export class ReviewSearchComponent implements OnInit {
             'Ups... Algo malo ocurrió. Intenta de nuevo.'
           );
         }
+        this.isLoading = false;
       },
     });
   }

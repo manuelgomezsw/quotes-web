@@ -9,8 +9,7 @@ import {WordSearchComponent} from './words/search/search.component';
 import {WordFormComponent} from "./words/form/form.component";
 
 import {ReviewSearchComponent} from './reviews/search/search.component';
-import {NewReviewComponent} from './reviews/new/new.component';
-import {EditReviewComponent} from './reviews/edit/edit.component';
+import {ReviewFormComponent} from "./reviews/form/form.component";
 
 export const routes: Routes = [
   {
@@ -56,11 +55,11 @@ export const routes: Routes = [
   {
     path: 'reviews/new',
     title: 'New Review',
-    component: NewReviewComponent
+    component: ReviewFormComponent
   },
   {
     path: 'reviews/:review_id/edit',
     title: 'Edit Review',
-    component: EditReviewComponent
+    component: ReviewFormComponent
   },
 ];

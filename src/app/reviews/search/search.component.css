@@ -1,0 +1,35 @@
+/* Para iPhones medianos y grandes */
+@media (max-width: 430px) {
+  .review-list-container {
+    width: 95%;
+    margin: 0 auto; /* Para centrar horizontalmente */
+  }
+
+  .review-card {
+    margin-top: 12px;
+  }
+}
+
+/* Para pantallas de escritorio estándar */
+@media (min-width: 1024px) {
+  .review-list-container {
+    width: 60%;
+    margin: 0 auto; /* Para centrar horizontalmente */
+  }
+
+  .review-card {
+    margin: 12px;
+  }
+}
+
+/* Para pantallas de escritorio grandes */
+@media (min-width: 1440px) {
+  .review-list-container {
+    width: 60%;
+    margin: 0 auto; /* Para centrar horizontalmente */
+  }
+
+  .review-card {
+    margin: 12px;
+  }
+}

@@ -60,7 +60,7 @@ export class WordFormComponent implements OnInit {
     if (this.isEditMode) {
       this.editWord();
     } else {
-      this.addWord();
+      this.createWord();
     }
   }
 
@@ -68,7 +68,7 @@ export class WordFormComponent implements OnInit {
     this.isLoading = true;
     this.wordService.deleteWord(this.word.word_id).subscribe({
       next: (response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['words/search']);
         this.notificationService.openSnackBar('Palabra eliminada');
         this.isLoading = false;
       },
@@ -82,7 +82,24 @@ export class WordFormComponent implements OnInit {
     });
   }
 
-  private addWord(): void {
+  private loadWord(word_id: any) {
+    this.isLoading = true;
+    this.wordService.getByID(word_id).subscribe({
+      next: (response) => {
+        this.word = response;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.log('Error getting word: ' + JSON.stringify(error));
+        this.notificationService.openSnackBar(
+          'Algo malo ocurrió. Intenta de nuevo.'
+        );
+        this.isLoading = false;
+      },
+    });
+  }
+
+  private createWord(): void {
     this.isLoading = true;
     this.wordService.addWord(this.word).subscribe({
       next: () => {
@@ -108,7 +125,7 @@ export class WordFormComponent implements OnInit {
     this.isLoading = true;
     this.wordService.editWord(this.word).subscribe({
       next: (response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['words/search']);
         this.notificationService.openSnackBar('Palabra editada');
         this.isLoading = false;
       },
@@ -121,23 +138,6 @@ export class WordFormComponent implements OnInit {
             'Algo malo ocurrió. Intenta de nuevo.'
           );
         }
-        this.isLoading = false;
-      },
-    });
-  }
-
-  private loadWord(word_id: any) {
-    this.isLoading = true;
-    this.wordService.getByID(word_id).subscribe({
-      next: (response) => {
-        this.word = response;
-        this.isLoading = false;
-      },
-      error: (error) => {
-        console.log('Error getting word: ' + JSON.stringify(error));
-        this.notificationService.openSnackBar(
-          'Algo malo ocurrió. Intenta de nuevo.'
-        );
         this.isLoading = false;
       },
     });

@@ -11,8 +11,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 
-import {Quote} from '../../domain/quote';
 import {environment} from '../../../environments/environment';
+import {Quote} from '../../domain/quote';
 import {NotificationService} from "../../services/notification.service";
 import {CookiesService} from "../../services/cookies.service";
 import {QuoteService} from '../../client/quote.service';
@@ -103,7 +103,7 @@ export class QuoteFormComponent implements OnInit {
   protected onDeleteQuote() {
     this.quoteService.deleteQuote(this.quote.quote_id).subscribe({
       next: (response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['quotes/search']);
         this.notificationService.openSnackBar('Frase eliminada');
       },
       error: (error) => {
@@ -166,7 +166,7 @@ export class QuoteFormComponent implements OnInit {
 
     this.quoteService.editQuote(this.quote).subscribe({
       next: (response) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['quotes/search']);
         this.notificationService.openSnackBar('Frase editada');
         this.isLoading = false;
       },
@@ -178,6 +178,10 @@ export class QuoteFormComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  private clearForm() {
+    this.quote.phrase = "";
   }
 
   private setRememberedCookies() {
@@ -193,9 +197,5 @@ export class QuoteFormComponent implements OnInit {
   private getRememberedCookies() {
     this.quote.author = this.cookiesService.getCookie("lastAuthor");
     this.quote.work = this.cookiesService.getCookie("lastWork");
-  }
-
-  private clearForm() {
-    this.quote.phrase = "";
   }
 }
