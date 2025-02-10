@@ -1,6 +1,11 @@
 <mat-toolbar>
-  <span>Memorizar palabra</span>
+  <span>{{ isEditMode ? 'Actualizar palabra' : 'Memorizar palabra' }}</span>
 </mat-toolbar>
+<div *ngIf="isLoading" class="loading-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
 
 <div class="custom-main-content">
   <mat-form-field class="full-width">
@@ -11,8 +16,7 @@
       type="text"
       [(ngModel)]="word.word"
       name="wordName"
-      onfocus="this.select()"
-    />
+      onfocus="this.select()"/>
   </mat-form-field>
 
   <mat-form-field class="full-width">
@@ -28,12 +32,6 @@
     ></textarea>
   </mat-form-field>
 
-  <button
-    mat-flat-button
-    type="button"
-    color="primary"
-    (click)="onMemorizeWord()"
-  >
-    MEMORIZAR
-  </button>
+  <button mat-flat-button type="button" color="primary" (click)="onSave()">MEMORIZAR</button>
+  <button mat-button *ngIf="isEditMode" color="warn" (click)="onDeleteWord()">ELIMINAR</button>
 </div>

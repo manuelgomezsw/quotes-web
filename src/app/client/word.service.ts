@@ -33,7 +33,7 @@ export class WordService {
     return this.http.put(environment.wordsUrl + "/" + word.word_id, word);
   }
 
-  deleteWord(wordID: number): Observable<any> {
+  deleteWord(wordID: any): Observable<any> {
     return this.http.delete(environment.wordsUrl + "/" + wordID);
   }
 }

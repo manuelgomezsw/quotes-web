@@ -1,17 +1,16 @@
 import {Routes} from '@angular/router';
 
-import {SearchQuoteComponent} from './quotes/search/search.component';
-import {DiscoverQuoteComponent} from './quotes/discover/discover.component';
+import {HomeComponent} from "./home/home.component";
 
-import {SearchWordComponent} from './words/search/search.component';
-import {NewWordComponent} from './words/new/new.component';
-import {EditWordComponent} from './words/edit/edit.component';
+import {QuoteSearchComponent} from './quotes/search/search.component';
+import {QuoteFormComponent} from "./quotes/form/form.component";
 
-import {SearchReviewComponent} from './reviews/search/search.component';
+import {WordSearchComponent} from './words/search/search.component';
+import {WordFormComponent} from "./words/form/form.component";
+
+import {ReviewSearchComponent} from './reviews/search/search.component';
 import {NewReviewComponent} from './reviews/new/new.component';
 import {EditReviewComponent} from './reviews/edit/edit.component';
-import {HomeComponent} from "./home/home.component";
-import {QuoteFormComponent} from "./quotes/form/form.component";
 
 export const routes: Routes = [
   {
@@ -22,7 +21,7 @@ export const routes: Routes = [
   {
     path: 'quotes/search',
     title: 'Search Quotes',
-    component: SearchQuoteComponent,
+    component: QuoteSearchComponent,
   },
   {
     path: 'quotes/new',
@@ -35,29 +34,24 @@ export const routes: Routes = [
     component: QuoteFormComponent
   },
   {
-    path: 'quotes/discover',
-    title: 'Discovery Quotes',
-    component: DiscoverQuoteComponent
-  },
-  {
     path: 'words/search',
     title: 'Search Words',
-    component: SearchWordComponent,
+    component: WordSearchComponent,
   },
   {
     path: 'words/new',
     title: 'New Word',
-    component: NewWordComponent
+    component: WordFormComponent
   },
   {
     path: 'words/:word_id/edit',
     title: 'Edit Word',
-    component: EditWordComponent
+    component: WordFormComponent
   },
   {
     path: 'reviews/search',
     title: 'Search Review',
-    component: SearchReviewComponent,
+    component: ReviewSearchComponent,
   },
   {
     path: 'reviews/new',

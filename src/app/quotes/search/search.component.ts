@@ -46,7 +46,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
-export class SearchQuoteComponent implements OnInit {
+export class QuoteSearchComponent implements OnInit {
   quotes: Quote[] = [];
   keyword: string = '';
   author: string = '';

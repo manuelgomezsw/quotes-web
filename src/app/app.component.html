@@ -4,9 +4,7 @@
       mat-button
       routerLink=""
       routerLinkActive="router-link-active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      Inicio
+      [routerLinkActiveOptions]="{ exact: true }">Inicio
     </button>
     <button mat-button [matMenuTriggerFor]="belowQuotes">Frases</button>
     <mat-menu #belowQuotes="matMenu" yPosition="below">
@@ -14,25 +12,13 @@
         mat-menu-item
         routerLink="/quotes/search"
         routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Buscar
+        [routerLinkActiveOptions]="{ exact: true }">Buscar
       </button>
       <button
         mat-menu-item
         routerLink="/quotes/new"
         routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Memorizar
-      </button>
-      <button
-        mat-menu-item
-        routerLink="/quotes/discover"
-        routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Descubrir
+        [routerLinkActiveOptions]="{ exact: true }">Memorizar
       </button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="belowWords">Palabras</button>
@@ -41,17 +27,13 @@
         mat-menu-item
         routerLink="/words/search"
         routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Buscar
+        [routerLinkActiveOptions]="{ exact: true }">Buscar
       </button>
       <button
         mat-menu-item
         routerLink="/words/new"
         routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Memorizar
+        [routerLinkActiveOptions]="{ exact: true }">Memorizar
       </button>
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="belowReviews">Opiniones</button>
@@ -60,17 +42,13 @@
         mat-menu-item
         routerLink="/reviews/search"
         routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Buscar
+        [routerLinkActiveOptions]="{ exact: true }">Buscar
       </button>
       <button
         mat-menu-item
         routerLink="/reviews/new"
         routerLinkActive="router-link-active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        Opinar
+        [routerLinkActiveOptions]="{ exact: true }">Opinar
       </button>
     </mat-menu>
     <span class="menu-spacer"></span>

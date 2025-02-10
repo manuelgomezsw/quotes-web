@@ -31,10 +31,6 @@ export class QuoteService {
     return this.http.get(environment.quotesUrl + "/work/" + work);
   }
 
-  getTopics(): Observable<any> {
-    return this.http.get(environment.quotesUrl + "/topics");
-  }
-
   getRandomQuote(): Observable<any> {
     return this.http.get(environment.quotesUrl + "/random");
   }

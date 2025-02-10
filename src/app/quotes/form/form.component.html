@@ -35,13 +35,6 @@
     (selectedValue)="onSelectedWork($event)">
   </app-autocomplete-input>
 
-  <button
-    mat-flat-button
-    type="button"
-    color="primary"
-    (click)="onSave()"
-  >
-    MEMORIZAR
-  </button>
+  <button mat-flat-button type="button" color="primary" (click)="onSave()">MEMORIZAR</button>
   <button mat-button color="warn" *ngIf="isEditMode" (click)="onDeleteQuote()">ELIMINAR</button>
 </div>

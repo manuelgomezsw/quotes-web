@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -33,8 +33,8 @@ import { NotificationService } from '../../services/notification.service';
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
-export class SearchReviewComponent {
-  reviews: Review[] = new Array();
+export class ReviewSearchComponent implements OnInit {
+  reviews: Review[] = [];
   keyword: string = '';
 
   constructor(

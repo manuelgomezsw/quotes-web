@@ -1,8 +1,0 @@
-.quote-card {
-  margin-bottom: 7px;
-}
-
-.scroll-container {
-  max-height: 200px; /* Ajusta este valor según la altura que necesites */
-  overflow-y: auto; /* Habilita el scroll vertical */
-}
