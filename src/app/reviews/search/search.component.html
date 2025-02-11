@@ -1,13 +1,11 @@
 <mat-toolbar>
   <span>Buscar Opinión</span>
 </mat-toolbar>
-<div *ngIf="isLoading" class="loading-container">
+
+<div class="custom-main-content">
   <div *ngIf="isLoading" class="loading-container">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-</div>
-
-<div class="custom-main-content">
   <mat-form-field class="full-width">
     <mat-label>¿Cuál es el título de la opinión?</mat-label>
     <input

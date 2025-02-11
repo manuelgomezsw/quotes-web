@@ -19,40 +19,56 @@
   color: #007bff;
 }
 
+/* Cabecera de la tarjeta */
+mat-card-header {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fff;
+}
+
 /* Estilo para el subtitle */
 mat-card-subtitle {
   font-size: 0.9rem;
   color: #777;
   margin-top: 0.25rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
   font-style: italic;
 }
 
 /* Estilo para el contenido */
 mat-card-content {
+  padding: 1rem;
   font-size: 1rem;
-  color: #444;
+  color: #555;
   line-height: 1.6;
-  margin-bottom: 1rem;
 }
 
-/* Estilo para las acciones */
+/* Acciones de la tarjeta (botones) */
 mat-card-actions {
   display: flex;
   justify-content: flex-end;
-  padding-top: 0.5rem;
-  border-top: 1px solid #eee;
-  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #f0f0f0;
+  background-color: #fafafa;
+
+  button {
+    margin-left: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+  }
 }
 
-mat-card-actions button {
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease;
-}
-
-mat-card-actions button:hover {
-  background-color: rgba(0, 123, 255, 0.1);
+/* Títulos y secciones de la lista de quotes */
+.review-list-container h2 {
+  font-size: 1.2rem; /* Tamaño menor para no robar protagonismo */
+  font-weight: 400; /* Peso normal, no muy fuerte */
+  color: #777; /* Color gris para que sea discreto */
+  text-align: center; /* Opcional: centrar el texto */
+  margin-bottom: 1rem; /* Espacio inferior para separar visualmente de los posts */
 }
 
 /* Para iPhones medianos y grandes */
