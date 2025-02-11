@@ -11,24 +11,46 @@
   <mat-form-field class="full-width">
     <mat-label>¿Cuál será el título de la opinión?</mat-label>
     <input
-      id="wordNameInput"
+      id="titleInput"
       matInput
       type="text"
       [(ngModel)]="review.title"
-      name="wordName"
+      name="title"
       onfocus="this.select()"/>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>¿Cuál es la opinión?</mat-label>
     <textarea
-      id="descriptionInput"
+      id="reviewInput"
       cols="30"
       rows="20"
       matInput
-      type="text"
+      type="review"
       [(ngModel)]="review.review"
       name="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>¿Quién es el autor?</mat-label>
+    <input
+      id="authorInput"
+      matInput
+      type="text"
+      [(ngModel)]="review.author"
+      name="author"
+      onfocus="this.select()"/>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>¿Cuál es la fuente?</mat-label>
+    <input
+      id="sourceInput"
+      matInput
+      type="text"
+      [(ngModel)]="review.source"
+      name="source"
+      onfocus="this.select()"/>
   </mat-form-field>
 
   <button mat-flat-button type="button" color="primary" (click)="onSave()">MEMORIZAR</button>

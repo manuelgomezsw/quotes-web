@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <span>
+    {{ review.title }}
+  </span>
+</mat-toolbar>
+<div *ngIf="isLoading" class="loading-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>
+
+<article class="post">
+  <p class="post-meta">
+    Publicado el {{ review.date_created | date:'dd' }} de
+    {{ review.date_created | date:'MMMM' }} de
+    {{ review.date_created | date:'yyyy' }}
+  </p>
+  <mat-card-subtitle>
+    <div class="metadata">
+      <div class="author">
+        <span class="label">Por:</span> {{ review.author }}
+      </div>
+      <div class="source">
+        <span class="label">Fuente:</span> {{ review.source }}
+      </div>
+    </div>
+  </mat-card-subtitle>
+  <div class="post-content">
+    <p>
+      {{ review.review }}
+    </p>
+  </div>
+</article>
+
+<footer>
+  <div class="tags">
+    <a
+      *ngFor="let tag of review.tags"
+      [routerLink]="['/tags', tag]"
+      class="tag-link">
+      {{ tag }}
+    </a>
+  </div>
+</footer>

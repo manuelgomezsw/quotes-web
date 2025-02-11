@@ -1,6 +1,9 @@
 export interface Review {
-  title: string;
-  review?: string;
   review_id?: number;
+  title?: string;
+  review?: string;
+  author?: string;
+  source?: string;
+  tags?: string[];
   date_created?: string;
 }

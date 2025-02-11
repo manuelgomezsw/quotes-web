@@ -1,3 +1,60 @@
+/* Estilo para el título dentro de la review-card */
+.review-card mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Estilo para el enlace que contiene el título */
+.review-card mat-card-title a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+/* Efecto hover sutil en el enlace */
+.review-card mat-card-title a:hover {
+  color: #007bff;
+}
+
+/* Estilo para el subtitle */
+mat-card-subtitle {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+/* Estilo para el contenido */
+mat-card-content {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Estilo para las acciones */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+}
+
+mat-card-actions button {
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+mat-card-actions button:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
 /* Para iPhones medianos y grandes */
 @media (max-width: 430px) {
   .review-list-container {

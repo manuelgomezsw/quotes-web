@@ -25,15 +25,17 @@
     <mat-card class="review-card" *ngFor="let review of reviews">
       <mat-card-header>
         <mat-card-title>
-          {{ review.title }}
+          <a [routerLink]="['/reviews/' + review.review_id + '/detail']">
+            {{ review.title }}
+          </a>
         </mat-card-title>
         <mat-card-subtitle>
-          {{ review.date_created | date:'yyyy-MM-dd' }}
+          {{ review.author }}
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p>
-          {{ review.review | slice:0:100 }}...
+          {{ review.review }}...
         </p>
       </mat-card-content>
       <mat-card-actions>

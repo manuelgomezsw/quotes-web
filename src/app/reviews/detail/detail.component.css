@@ -1,0 +1,156 @@
+:host {
+  display: block;
+  background-color: #f9f9f9; /* Fondo claro para todo el contenedor */
+  color: #333; /* Texto en gris oscuro para buen contraste */
+  font-family: 'Open Sans', sans-serif;
+  padding: 2rem;
+}
+
+/* Estilos generales para el título en el mat-toolbar */
+mat-toolbar {
+  background-color: transparent; /* Fondo transparente para integrarse con el layout */
+  box-shadow: none; /* Sin sombra para un look limpio */
+  padding: 1rem;
+}
+
+mat-toolbar span {
+  font-size: 2.5rem; /* Tamaño grande para desktop */
+  font-weight: 700; /* Negrita para dar protagonismo al título */
+  color: #333; /* Gris oscuro, más suave que el negro */
+  letter-spacing: 0.5px; /* Un poco de espaciado entre letras para mejorar la lectura */
+  line-height: 1.2; /* Line-height ajustado para una buena proporción */
+  margin: 0; /* Sin márgenes innecesarios */
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+  mat-toolbar span {
+    font-size: 1.8rem;
+    letter-spacing: 0.3px;
+    text-align: center;
+    white-space: nowrap;         /* No permite que el texto se divida en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis;     /* Muestra ... si el texto es demasiado largo */
+  }
+}
+
+/* Contenedor del indicador de carga */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+/* Estilo para el artículo (contenido principal) */
+article.post {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Metadatos del post (fecha, etc.) */
+article.post .post-meta {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+/* Contenido del post */
+article.post .post-content {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Footer con autor, fuente y etiquetas */
+footer {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Si deseas separar en dos líneas, por ejemplo, una para autor y fuente y otra para etiquetas */
+footer p {
+  margin: 0.25rem 0;
+}
+
+/* Opcional: en pantallas grandes, puedes alinear el footer en dos columnas */
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.metadata {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 600px) {
+  .metadata {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.metadata .author,
+.metadata .source {
+  font-size: 0.9rem; /* tamaño un poco menor */
+  font-weight: 400; /* peso normal o ligero */
+  color: #777; /* gris suave, para no resaltar demasiado */
+  display: flex;
+  align-items: center;
+}
+
+.metadata .label {
+  font-weight: 600; /* para diferenciar la etiqueta */
+  color: #555;
+  margin-right: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.post-meta {
+  margin-bottom: 1rem; /* Separa el "post-meta" de la metadata o del siguiente bloque */
+}
+
+.metadata {
+  margin-bottom: 1.5rem; /* Espacio entre la metadata y el contenido principal */
+}
+
+/* Alternativamente, podrías agregar margen superior al contenido */
+.post-content {
+  margin-top: 1.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* Espacio entre tags */
+  margin-top: 1rem;
+}
+
+.tag-link {
+  text-decoration: none;
+  background-color: #f3f3f3; /* Fondo muy claro */
+  color: #555; /* Texto en gris suave */
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tag-link:hover {
+  background-color: #ddd;
+  color: #333;
+}

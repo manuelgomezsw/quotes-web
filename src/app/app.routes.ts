@@ -10,6 +10,7 @@ import {WordFormComponent} from "./words/form/form.component";
 
 import {ReviewSearchComponent} from './reviews/search/search.component';
 import {ReviewFormComponent} from "./reviews/form/form.component";
+import {ReviewDetailComponent} from "./reviews/detail/detail.component";
 
 export const routes: Routes = [
   {
@@ -61,5 +62,10 @@ export const routes: Routes = [
     path: 'reviews/:review_id/edit',
     title: 'Edit Review',
     component: ReviewFormComponent
+  },
+  {
+    path: 'reviews/:review_id/detail',
+    title: 'Detail Review',
+    component: ReviewDetailComponent
   },
 ];
