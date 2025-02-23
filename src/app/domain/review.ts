@@ -5,5 +5,6 @@ export interface Review {
   author?: string;
   source?: string;
   tags?: string[];
+  column?: boolean;
   date_created?: string;
 }

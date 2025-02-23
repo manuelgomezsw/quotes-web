@@ -14,6 +14,7 @@ import {ReviewService} from "../../client/review.service";
 import {NotificationService} from "../../services/notification.service";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {NgIf} from "@angular/common";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @Component({
   selector: 'app-form',
@@ -26,7 +27,8 @@ import {NgIf} from "@angular/common";
     ReactiveFormsModule,
     FormsModule,
     MatProgressBarModule,
-    NgIf
+    NgIf,
+    MatCheckboxModule
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'

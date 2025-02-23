@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {DatePipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {Review} from "../../domain/review";
@@ -23,6 +23,7 @@ import {ActivatedRoute, RouterLink} from "@angular/router";
     DatePipe,
     NgForOf,
     RouterLink,
+    NgClass,
   ],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'

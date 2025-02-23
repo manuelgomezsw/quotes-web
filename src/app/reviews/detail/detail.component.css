@@ -28,9 +28,9 @@ mat-toolbar span {
     font-size: 1.8rem;
     letter-spacing: 0.3px;
     text-align: center;
-    white-space: nowrap;         /* No permite que el texto se divida en varias líneas */
+    white-space: nowrap; /* No permite que el texto se divida en varias líneas */
     overflow: hidden;
-    text-overflow: ellipsis;     /* Muestra ... si el texto es demasiado largo */
+    text-overflow: ellipsis; /* Muestra ... si el texto es demasiado largo */
   }
 }
 
@@ -153,4 +153,14 @@ footer p {
 .tag-link:hover {
   background-color: #ddd;
   color: #333;
+}
+
+/* Badge "Editorial" */
+.editorial-badge {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+  text-transform: uppercase;
 }

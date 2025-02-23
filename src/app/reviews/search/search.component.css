@@ -71,6 +71,23 @@ mat-card-actions {
   margin-bottom: 1rem; /* Espacio inferior para separar visualmente de los posts */
 }
 
+/* Estilo adicional para las columnas editoriales */
+.review-card.editorial {
+  border-left: 4px solid #007bff;     /* Borde izquierdo con color de acento */
+}
+
+/* Badge para identificar columnas editoriales */
+.editorial-badge {
+  display: inline-block;
+  background-color: #007bff;         /* Color de acento */
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
 /* Para iPhones medianos y grandes */
 @media (max-width: 430px) {
   .review-list-container {
@@ -80,6 +97,17 @@ mat-card-actions {
 
   .review-card {
     margin-top: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
   }
 }
 
@@ -91,7 +119,18 @@ mat-card-actions {
   }
 
   .review-card {
-    margin: 12px;
+    margin-top: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
   }
 }
 
@@ -103,6 +142,17 @@ mat-card-actions {
   }
 
   .review-card {
-    margin: 12px;
+    margin-top: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
   }
 }

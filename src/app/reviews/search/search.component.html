@@ -20,12 +20,14 @@
 
   <div class="review-list-container" *ngIf="reviews.length > 0">
     <h2>Opiniones a recordar</h2>
-    <mat-card class="review-card" *ngFor="let review of reviews">
+    <mat-card [ngClass]="{'review-card': true, 'editorial': review.column}" *ngFor="let review of reviews">
       <mat-card-header>
         <mat-card-title>
           <a [routerLink]="['/reviews/' + review.review_id + '/detail']">
             {{ review.title }}
           </a>
+          <!-- Badge que se muestra solo si es columna editorial -->
+          <span *ngIf="review.column" class="editorial-badge">Recorte</span>
         </mat-card-title>
         <mat-card-subtitle>
           {{ review.author }}
